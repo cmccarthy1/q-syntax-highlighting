@@ -8,6 +8,7 @@ if [[ $1 = "vim" ]];then
     read createvimrc
     if [[ $createvimrc = "y" ]];then
       cp $PWD/vim/vimrc $HOME/.vimrc
+      echo ".vimrc file created in the appropriate location"
     else
       echo "Continuing without creating the .vimrc"
     fi
@@ -18,7 +19,7 @@ if [[ $1 = "vim" ]];then
       cp $PWD/vim/vimrc $HOME/.vimrc
     else
       echo "Continuing without overwriting $HOME/.vimrc"
-    fi 
+    fi
   fi
 
   if [[ ! -d "$VIMHOME" ]];then
@@ -33,15 +34,17 @@ if [[ $1 = "vim" ]];then
       cp $PWD/vim/vim/indent/* $VIMHOME/indent/
       cp $PWD/vim/vim/syntax/* $VIMHOME/syntax/
       cp $PWD/vim/vim/filetype.vim $VIMHOME/
+      echo "All files have been moved to the appropriate location"
     else
       echo "Installation aborted by the user"
       exit 1
     fi
   fi
-  echo "That worked vim" 
 elif [[ $1 = "atom" ]];then
   echo "That worked for atom"
 else
   echo "Input for arg 1 must be 'atom'/'vim', update accordingly"
   exit 1
 fi
+echo "Installation instructions followed exiting." 
+
